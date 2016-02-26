@@ -1,0 +1,19 @@
+<md-content flex id="content" layout='column'>
+  <md-card ng-repeat="pollInfo in pollData">
+    <md-card-title>
+    <md-card-title-text>
+        <span class="md-headline">{{pollInfo.question}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-list>
+  <md-list-item class="md-3-line">
+    <div class="md-list-item-text" layout="column" ng-repeat="polls in pollInfo.polls">
+      <h3 ng-value="polls.option" aria-label="{{ polls.option }}">{{polls.option}} : {{polls.vote}}</h3>
+    </div>
+  </md-list-item>
+  <md-divider ></md-divider>
+</md-list>
+    </md-card-content>
+  </md-card>
+</md-content>

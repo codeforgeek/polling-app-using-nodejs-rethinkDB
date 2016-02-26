@@ -1,0 +1,39 @@
+  <md-content layout-padding>
+    <form name="projectForm">
+      <md-input-container class="md-block">
+        <label>Enter poll question</label>
+        <input md-maxlength="70" required name="question" ng-model="formData.pollQuestion">
+        <div ng-messages="projectForm.question.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 70 characters long.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>option 1</label>
+        <input required name="option1" ng-model="formData.pollOption1">
+        <div ng-messages="projectForm.option1.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Option 2</label>
+        <input required name="option2" ng-model="formData.pollOption2"/>
+        <div ng-messages="projectForm.pollOption2.$error" role="alert">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Option 3</label>
+        <input required name="option3" ng-model="formData.pollOption3"/>
+        <div ng-messages="projectForm.pollOption3.$error" role="alert">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <md-button class="md-raised md-primary" ng-disabled="projectForm.$invalid" ng-click="submitPoll()">Create Poll</md-button>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <span ng-model="formData.message"></span>
+      </md-input-container>
+    </form>
+  </md-content>

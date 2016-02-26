@@ -1,0 +1,16 @@
+<md-content flex id="content" layout='column'>
+  <md-card ng-repeat='pollInfo in pollData' ng-hide="hiddenrows.indexOf($index) !== -1">
+    <md-card-title>
+    <md-card-title-text>
+        <span class="md-headline">{{pollInfo.question}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+    <md-radio-group layout="column" ng-model="pollInfo.selected" ng-change='updateVote($index)'>
+      <md-radio-button ng-repeat="polls in pollInfo.polls" ng-value="polls.option" aria-label="{{ polls.option }}">
+       {{ polls.option }}
+     </md-radio-button>
+    </md-radio-group>
+    </md-card-content>
+  </md-card>
+</md-content>
