@@ -30,10 +30,7 @@
         </div>
       </md-input-container>
       <md-input-container class="md-block">
-        <md-button class="md-raised md-primary" ng-disabled="projectForm.$invalid" ng-click="submitPoll()">Create Poll</md-button>
-      </md-input-container>
-      <md-input-container class="md-block">
-        <span ng-model="formData.message"></span>
+        <md-button class="md-raised md-primary" ng-disabled="projectForm.$invalid" ng-click="submitPoll($event)">Create Poll</md-button>
       </md-input-container>
     </form>
   </md-content>

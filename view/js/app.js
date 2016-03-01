@@ -18,7 +18,7 @@ app.config(function($routeProvider){
           });
 });
 
-app.controller('pollingController',function($scope,$http,socket) {
+app.controller('pollingController',function($scope,$mdDialog,$http,socket) {
 
   $scope.pollData = [];
   $scope.formData = {};
@@ -30,7 +30,7 @@ app.controller('pollingController',function($scope,$http,socket) {
       $scope.pollData = response.data;
     });
   }
-  $scope.submitPoll = function() {
+  $scope.submitPoll = function(ev) {
     var data = {
       "question" : $scope.formData.pollQuestion,
       "polls" : [{
@@ -41,14 +41,26 @@ app.controller('pollingController',function($scope,$http,socket) {
         "option" : $scope.formData.pollOption3, "vote" : 0
       }]
     };
+    var message = {"title" : "", "message" : ""};
     $http.post('/polls',data).success(function(response) {
       if(response.responseCode === 0) {
-        $scope.formData.message = "Poll is successfully created";
+        message.title = "Success !";
+        message.message = "Poll is successfully created";
         data["id"] = response.data.generated_keys[0];
         $scope.pollData.push(data);
       } else {
-        $scope.formData.message = "There is some error happened creating poll";
+        message.title = "Error !";
+        message.message = "There is some error happened creating poll";
       }
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.querySelector('#popupContainer')))
+          .clickOutsideToClose(true)
+          .title(message.title)
+          .textContent(message.message)
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
     });
   }
 
