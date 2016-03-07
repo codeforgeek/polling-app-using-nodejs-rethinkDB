@@ -30,3 +30,8 @@ After installation, run the node application using following command.
 node app.js
 ```
 Visit **localhost:3000** to view the app.
+
+## Tutorial
+
+* https://codeforgeek.com/2016/02/getting-started-with-rethinkdb/
+* https://codeforgeek.com/2016/03/building-real-time-polling-app-rethinkdb-nodejs
